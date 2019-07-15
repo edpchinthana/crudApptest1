@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
+#include <ctype.h>
 #include "delay.h"
+
+int delayAmount = 5;
 
 struct students{
     char name[100];
@@ -23,13 +26,13 @@ void addRecords(){
     system("cls");
     for(int y=1;y<=57;y++){
         printf("-");
-        delay(6);
+        delay(delayAmount);
     }
     printf("\n");
     printf("-----------------------ADD RECORDS-----------------------\n");
     for(int y=1;y<=57;y++){
         printf("-");
-        delay(6);
+        delay(delayAmount);
     }
     printf("\n\n");
 
@@ -57,7 +60,7 @@ void addRecords(){
     fclose(fp);
     printf("\nSaving data.");
     for(int y=0;y<5;y++){
-        delay(300);
+        delay(100);
         printf(".");
     }
     printf("\rSuccessfully saved data.\n\n");
@@ -71,13 +74,13 @@ void viewRecords(){
     system("cls");
     for(int y=1;y<=57;y++){
         printf("-");
-        delay(6);
+        delay(delayAmount);
     }
     printf("\n");
-    printf("------------------------VIEW RECORDS-----------------------\n");
+    printf("-----------------------VIEW RECORDS----------------------\n");
     for(int y=1;y<=57;y++){
         printf("-");
-        delay(6);
+        delay(delayAmount);
     }
     printf("\n\n");
     char dataToBeRead[100];
@@ -97,15 +100,16 @@ void viewRecords(){
 //End of the program
 void goodBye(){
     system("cls");
+    printf("\n\n\n");
     for(int y=1;y<=57;y++){
         printf("-");
-        delay(8);
+        delay(delayAmount);
     }
     printf("\n");
 
     for(int y=1;y<=24;y++){
         printf("-");
-        delay(50);
+        delay(delayAmount);
     }
     printf("G");
     delay(50);
@@ -126,29 +130,30 @@ void goodBye(){
 
     for(int y=1;y<=25;y++){
         printf("-");
-        delay(50);
+        delay(delayAmount);
     }
     printf("\n");
     for(int y=1;y<=57;y++){
         printf("-");
-        delay(8);
+        delay(delayAmount);
     }
-    printf("\n\n");
+    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 }
 
 //main function - menu is written here
 int main()
 {
     system("cls");
+    system("color 70");
     for(int y=1;y<=57;y++){
         printf("-");
-        delay(6);
+        delay(delayAmount);
     }
     printf("\n");
     printf("-------Welcome to student records management system------\n");\
     for(int y=1;y<=57;y++){
         printf("-");
-        delay(6);
+        delay(delayAmount);
     }
     printf("\n\n");
 
@@ -164,7 +169,7 @@ int main()
     }
 
 
-    int x;
+    char c;
     printf("\t\t ____ MENU ____\n");
     printf("\t\t|1.Add Records |\n");
     printf("\t\t|2.Edit Records|\n");
@@ -172,18 +177,21 @@ int main()
     printf("\t\t|4.Exit        |\n");
     printf("\t\t --------------\n");
     printf("\tSelect any option : ");
-    scanf("%d",&x);
-
-    switch(x){
-case 1:
+    scanf("%c",&c);
+if(c>=49 && c<=53){
+    switch(c){
+case '1':
     addRecords();
     break;
-case 3:
+case '3':
     viewRecords();
     break;
-case 4:
+case '4':
     goodBye();
     break;
     }
+}else{
+    main();
+}
     return 0;
 }
